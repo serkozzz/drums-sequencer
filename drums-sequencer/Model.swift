@@ -58,18 +58,15 @@ class GridModel {
         var row = index / columns
         return pads[row][column]
     }
+    
+    func pad(uuid: UUID) -> Pad {
+        return flattenedPadsArray.first(where: { pad in uuid == pad.id })!
+    }
 }
 
 
 
-struct Pad : Hashable {
+struct Pad {
     var isActive = false
     var id = UUID()
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: Pad, rhs: Pad) -> Bool {
-        return lhs.id == rhs.id
-    }
 }

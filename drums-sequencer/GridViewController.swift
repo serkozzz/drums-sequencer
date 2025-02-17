@@ -16,7 +16,7 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var dataSource: UICollectionViewDiffableDataSource<Int, Pad>!
+    var dataSource: UICollectionViewDiffableDataSource<Int, UUID>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +29,12 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
         self.collectionView.collectionViewLayout = createLayout()
         self.collectionView.delegate = self
 
-        dataSource = UICollectionViewDiffableDataSource<Int, Pad>(collectionView: collectionView!) {collectionView, indexPath, pad in
+        dataSource = UICollectionViewDiffableDataSource<Int, UUID>(collectionView: collectionView!) {collectionView, indexPath, padID in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
             
             var backgroundConf = cell.defaultBackgroundConfiguration()
+            
+            var pad = GridModel.shared.pad(uuid: padID)
             backgroundConf.backgroundColor = pad.isActive ? .cyan : .lightGray
             cell.backgroundConfiguration = backgroundConf
             
@@ -45,17 +47,18 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
         print("tooglePad")
         GridModel.shared.tooglePad(index: indexPath.item)
         let pad = GridModel.shared.pad(index: indexPath.item)
-        
+  
+        //applySnapshot()
         var snapshot = dataSource.snapshot()
-        snapshot.reloadItems([pad])
-        dataSource.apply(snapshot, animatingDifferences: true)
+        snapshot.reloadItems([pad.id])
+        dataSource.apply(snapshot)
     }
     
     
     private func applySnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, Pad>()
+        var snapshot = NSDiffableDataSourceSnapshot<Int, UUID>()
         snapshot.appendSections([0])
-        snapshot.appendItems(GridModel.shared.flattenedPadsArray)
+        snapshot.appendItems(GridModel.shared.flattenedPadsArray.map { $0.id })
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
