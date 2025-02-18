@@ -17,6 +17,7 @@
 		9DA50BE82D64099D002E7635 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BE72D6408B7002E7635 /* PlayerView.swift */; };
 		9DA50BEA2D6418FE002E7635 /* SequencerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BE92D6418EF002E7635 /* SequencerViewController.swift */; };
 		9DA50BEC2D641C8E002E7635 /* SequencerTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BEB2D641C86002E7635 /* SequencerTimer.swift */; };
+		9DA50BEE2D6520A3002E7635 /* SequencerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BED2D652093002E7635 /* SequencerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		9DA50BE72D6408B7002E7635 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		9DA50BE92D6418EF002E7635 /* SequencerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencerViewController.swift; sourceTree = "<group>"; };
 		9DA50BEB2D641C86002E7635 /* SequencerTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencerTimer.swift; sourceTree = "<group>"; };
+		9DA50BED2D652093002E7635 /* SequencerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				9DA50B9D2D62A49C002E7635 /* Main.storyboard */,
 				9DA50B9E2D62A49C002E7635 /* SceneDelegate.swift */,
 				9DA50BE92D6418EF002E7635 /* SequencerViewController.swift */,
+				9DA50BED2D652093002E7635 /* SequencerManager.swift */,
 				9DA50BA82D62A4CB002E7635 /* GridViewController.swift */,
 				9DA50BE72D6408B7002E7635 /* PlayerView.swift */,
 				9DA50BAC2D62CD1F002E7635 /* Model.swift */,
@@ -160,6 +163,7 @@
 				9DA50BA22D62A49C002E7635 /* SceneDelegate.swift in Sources */,
 				9DA50BE82D64099D002E7635 /* PlayerView.swift in Sources */,
 				9DA50BAD2D62CD28002E7635 /* Model.swift in Sources */,
+				9DA50BEE2D6520A3002E7635 /* SequencerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,8 +10,6 @@ import Foundation
 
 class SequencerTimer {
     
-    static var shared = SequencerTimer()
-    
     var interval: TimeInterval = 1/2
     var notesCounter: Int = 0
     var timer: Timer?
@@ -38,8 +36,9 @@ class SequencerTimer {
         }
     }
     
-    func pause() {
-        
+    func stop() {
+        timer?.invalidate()
+        timer = nil
     }
     
     func resetTimer() {

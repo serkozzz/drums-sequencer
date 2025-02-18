@@ -17,24 +17,15 @@ class SequencerViewController: UIViewController, PlayerViewDelegate {
         super.viewDidLoad()
         playerView.delegate = self
         gridViewController = children.first(where: {$0 as? GridViewController != nil }) as? GridViewController
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(tick(_:)), name: .sequencerTimer, object: nil)
-        
     }
     
     func play(sender: PlayerView) {
-        SequencerTimer.shared.start()
-        
+        SequencerManager.shared.play()
     }
     
     func stop(sender: PlayerView) {
-        
+        SequencerManager.shared.stop()
     }
     
-    @objc func tick(_ notification: Notification) {
-        if let noteNumber = notification.userInfo?["noteNumber"] as? Int {
-            print("noteNumber \(noteNumber)")
-            GridModel.shared.lightIndicator(noteNumber: noteNumber)
-        }
-    }
+
 }
