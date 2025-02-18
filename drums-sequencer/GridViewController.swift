@@ -46,11 +46,11 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("tooglePad")
         GridModel.shared.tooglePad(index: indexPath.item)
-        let pad = GridModel.shared.pad(index: indexPath.item)
+        let id = dataSource.itemIdentifier(for: indexPath)!
   
         //applySnapshot()
         var snapshot = dataSource.snapshot()
-        snapshot.reloadItems([pad.id])
+        snapshot.reloadItems([id])
         dataSource.apply(snapshot)
     }
     

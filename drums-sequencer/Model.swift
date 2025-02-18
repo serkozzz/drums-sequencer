@@ -7,8 +7,8 @@
 
 import Foundation
 
-let GRID_MAX_COLUMNS = 8
-let GRID_MAX_ROWS = 4
+let GRID_MAX_COLUMNS = 64
+let GRID_MAX_ROWS = 8
 let GRID_DEFAULT_COLUMNS = 8
 let GRID_DEFAULT_ROWS = 4
 
@@ -20,7 +20,11 @@ class GridModel {
     private(set) var rows = GRID_DEFAULT_ROWS
     
     private(set) var pads: [[Pad]]
-    var flattenedPadsArray: [Pad] { pads.flatMap { $0 } }
+    
+    var flattenedPadsArray: [Pad] {
+        let allRows = pads.flatMap { Array($0.prefix(columns)) }
+        return Array(allRows.prefix(rows * columns))
+    }
     
     
     init() {
@@ -48,16 +52,16 @@ class GridModel {
     }
     
     func tooglePad(index: Int) {
-        var column = index % columns
-        var row = index / columns
+        let column = index % columns
+        let row = index / columns
         pads[row][column].isActive.toggle()
     }
     
-    func pad(index: Int) -> Pad {
-        var column = index % columns
-        var row = index / columns
-        return pads[row][column]
-    }
+//    func pad(index: Int) -> Pad {
+//        let column = index % columns
+//        let row = index / columns
+//        return pads[row][column]
+//    }
     
     func pad(uuid: UUID) -> Pad {
         return flattenedPadsArray.first(where: { pad in uuid == pad.id })!
