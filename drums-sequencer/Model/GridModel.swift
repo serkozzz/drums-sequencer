@@ -15,17 +15,10 @@ let GRID_DEFAULT_COLUMNS = 8
 let GRID_DEFAULT_ROWS = 4
 
 
-class PlayerModel {
-    static var shared = PlayerModel()
-    var bpm: Double = 120 {
-        didSet { bpmSubject.send(bpm) }
-    }
-    var bpmSubject = PassthroughSubject<Double, Never>()
-}
+
 
 
 class GridModel {
-    static var shared = GridModel()
     
     private(set) var columns = GRID_DEFAULT_COLUMNS {
         didSet { columnsChanged.send(columns) }

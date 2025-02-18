@@ -29,7 +29,8 @@ class SequencerManager {
     @objc func tick(_ notification: Notification) {
         if let noteNumber = notification.userInfo?["noteNumber"] as? Int {
             print("noteNumber \(noteNumber)")
-            GridModel.shared.lightIndicator(noteNumber: noteNumber)
+            var grid = SequencerModel.shared.grid
+            grid.lightIndicator(noteNumber: noteNumber)
         }
     }
 }

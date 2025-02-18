@@ -15,7 +15,7 @@ class SequencerTimer {
     var timer: Timer?
     
     init(){
-        PlayerModel.shared.bpmSubject.sink { [weak self] bpm in
+        SequencerModel.shared.bpmSubject.sink { [weak self] bpm in
             self?.updateTimer()
         }
 //        GridModel.shared.columnsChanged.sink{ _ in }
@@ -27,7 +27,7 @@ class SequencerTimer {
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) {[weak self] _ in
             guard let self = self else { return }
             
-            if (notesCounter >= GridModel.shared.columns) {
+            if (notesCounter >= SequencerModel.shared.grid.columns) {
                 notesCounter = 0
             }
                 
@@ -47,7 +47,7 @@ class SequencerTimer {
     
     private func updateTimer() {
         //always based on 64th notes
-        interval = 60 / PlayerModel.shared.bpm / 4
+        interval = 60 / SequencerModel.shared.bpm / 4
     }
 }
 
