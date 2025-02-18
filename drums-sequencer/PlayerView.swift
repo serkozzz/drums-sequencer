@@ -12,12 +12,16 @@ protocol PlayerViewDelegate: AnyObject {
     func stop(sender: PlayerView)
 }
 
+private let borderColor = UIColor.black.cgColor
+private let borderWidth: CGFloat = 2
+private let cornerRadius: CGFloat = 8
+
 class PlayerView: UIView {
 
     weak var delegate: PlayerViewDelegate?
     
     lazy var playerStack: UIStackView =  {
-        
+    
         var play = UIButton(systemImgName: "play.fill")
         play.addAction(UIAction { [weak self] _ in
             guard let self else { return }
@@ -29,7 +33,15 @@ class PlayerView: UIView {
         
         var bpmTextField = UITextField()
         bpmTextField.text = "120"
-    
+        bpmTextField.backgroundColor = UIColor.white
+        bpmTextField.layer.borderColor = borderColor
+        bpmTextField.layer.borderWidth = borderWidth
+        bpmTextField.layer.cornerRadius = cornerRadius
+        bpmTextField.textAlignment = .center
+        NSLayoutConstraint.activate([
+            bpmTextField.widthAnchor.constraint(equalToConstant: 50)
+        ])
+
         
         var stop = UIButton(systemImgName: "stop.fill")
         stop.addAction(UIAction { [weak self] _ in
@@ -40,7 +52,7 @@ class PlayerView: UIView {
         var bpmStackView = UIStackView(arrangedSubviews: [ bpmLabel, bpmTextField])
         bpmStackView.spacing = 15
         
-        var stack = UIStackView(arrangedSubviews: [play, stop, UIView(), bpmStackView])
+        var stack = UIStackView(arrangedSubviews: [stop, play, UIView(), bpmStackView])
         
         //stack.distribution = .fillEqually
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -78,5 +90,9 @@ private extension UIButton {
         conf.baseForegroundColor = .black
         self.configuration = conf
         self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.layer.borderColor = borderColor
+        self.layer.borderWidth = borderWidth
+        self.layer.cornerRadius = cornerRadius
     }
 }

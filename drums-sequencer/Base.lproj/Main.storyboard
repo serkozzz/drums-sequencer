@@ -36,9 +36,9 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umq-vt-aFJ" customClass="PlayerView" customModule="drums_sequencer" customModuleProvider="target">
-                                        <rect key="frame" x="336" y="0.0" width="180" height="36"/>
+                                        <rect key="frame" x="331" y="0.0" width="190" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="iz4-Ig-Ne3"/>
+                                            <constraint firstAttribute="width" constant="190" id="iz4-Ig-Ne3"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -72,6 +72,9 @@
                             <constraint firstItem="InL-tU-xiR" firstAttribute="leading" secondItem="cp0-O2-8Fg" secondAttribute="leading" id="t3r-vY-JNd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playerView" destination="umq-vt-aFJ" id="3QO-JV-irX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IV-JX-aJc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
