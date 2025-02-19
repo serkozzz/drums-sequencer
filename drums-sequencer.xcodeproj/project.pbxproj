@@ -20,7 +20,7 @@
 		9DA50BEE2D6520A3002E7635 /* SequencerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BED2D652093002E7635 /* SequencerManager.swift */; };
 		9DA50BF02D652272002E7635 /* SoundsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BEF2D65226E002E7635 /* SoundsPlayer.swift */; };
 		9DA50BF32D6522FA002E7635 /* SequencerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BF22D6522F1002E7635 /* SequencerModel.swift */; };
-		9DA50BF52D65253E002E7635 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BF42D65253E002E7635 /* Audio.swift */; };
+		9DA50BF52D65253E002E7635 /* AudioSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BF42D65253E002E7635 /* AudioSampler.swift */; };
 		9DA50BFA2D65268E002E7635 /* ContentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BF92D652688002E7635 /* ContentLoader.swift */; };
 		9DA50BFC2D6526F8002E7635 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BFB2D6526F5002E7635 /* Globals.swift */; };
 		9DA50C282D6549FF002E7635 /* AudioStorage in Resources */ = {isa = PBXBuildFile; fileRef = 9DA50C272D6549F7002E7635 /* AudioStorage */; };
@@ -42,7 +42,7 @@
 		9DA50BED2D652093002E7635 /* SequencerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencerManager.swift; sourceTree = "<group>"; };
 		9DA50BEF2D65226E002E7635 /* SoundsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsPlayer.swift; sourceTree = "<group>"; };
 		9DA50BF22D6522F1002E7635 /* SequencerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencerModel.swift; sourceTree = "<group>"; };
-		9DA50BF42D65253E002E7635 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		9DA50BF42D65253E002E7635 /* AudioSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSampler.swift; sourceTree = "<group>"; };
 		9DA50BF92D652688002E7635 /* ContentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLoader.swift; sourceTree = "<group>"; };
 		9DA50BFB2D6526F5002E7635 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		9DA50C272D6549F7002E7635 /* AudioStorage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AudioStorage; sourceTree = "<group>"; };
@@ -101,6 +101,7 @@
 				9DA50BF92D652688002E7635 /* ContentLoader.swift */,
 				9DA50BED2D652093002E7635 /* SequencerManager.swift */,
 				9DA50BEF2D65226E002E7635 /* SoundsPlayer.swift */,
+				9DA50BF42D65253E002E7635 /* AudioSampler.swift */,
 				9DA50BEB2D641C86002E7635 /* SequencerTimer.swift */,
 			);
 			path = Logic;
@@ -110,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				9DA50BFB2D6526F5002E7635 /* Globals.swift */,
-				9DA50BF42D65253E002E7635 /* Audio.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 			files = (
 				9DA50BA92D62A4CB002E7635 /* GridViewController.swift in Sources */,
 				9DA50BA12D62A49C002E7635 /* AppDelegate.swift in Sources */,
-				9DA50BF52D65253E002E7635 /* Audio.swift in Sources */,
+				9DA50BF52D65253E002E7635 /* AudioSampler.swift in Sources */,
 				9DA50BEA2D6418FE002E7635 /* SequencerViewController.swift in Sources */,
 				9DA50BFA2D65268E002E7635 /* ContentLoader.swift in Sources */,
 				9DA50BEC2D641C8E002E7635 /* SequencerTimer.swift in Sources */,

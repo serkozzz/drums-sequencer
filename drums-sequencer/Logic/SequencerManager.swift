@@ -14,7 +14,16 @@ class SequencerManager {
     var sequencerTimer = SequencerTimer()
     var soundsPlayer = SoundsPlayer()
     init() {
+        prepareAudioStorage()
         NotificationCenter.default.addObserver(self, selector: #selector(tick(_:)), name: .sequencerTimer, object: nil)
+    }
+    
+    private func prepareAudioStorage() {
+        do {
+            let url = Bundle.main.url(forResource: Globals.AUDIO_STORAGE_ROOT, withExtension: nil)!
+            try ContentLoader.shared.loadAudioStorage(dirURL: url)
+        }
+        catch { print("ContentLoader.\(#function) Ошибка загрузки audioStorage: \(error)") }
     }
     
     func play() {
@@ -30,9 +39,21 @@ class SequencerManager {
     @objc func tick(_ notification: Notification) {
         if let noteNumber = notification.userInfo?["noteNumber"] as? Int {
             print("noteNumber \(noteNumber)")
-            var grid = SequencerModel.shared.grid
+            let grid = SequencerModel.shared.grid
             grid.lightIndicator(noteNumber: noteNumber)
-            soundsPlayer.play(instrumentNumber: 0)
+            
+            if (noteNumber % 8 == 0) {
+                soundsPlayer.play(instrumentNumber: 0)
+            }
+            else if (noteNumber % 4 == 0) {
+                soundsPlayer.play(instrumentNumber: 1)
+            }
+
+            if (noteNumber % 2 == 0) {
+                soundsPlayer.play(instrumentNumber: 2)
+            }
+
+
         }
     }
 }
