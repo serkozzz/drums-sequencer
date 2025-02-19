@@ -24,10 +24,7 @@ class SoundsPlayer {
         startAudioEngine()
     }
     
-    
     func play(instrumentNumber: Int) {
-        let wavURL = urlForAudio(instruments[instrumentNumber])
-        //Audio.shared.playWAV(url: wavURL )
         samplers[instrumentNumber].play()
     }
     

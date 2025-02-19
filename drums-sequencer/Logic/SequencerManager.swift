@@ -42,18 +42,11 @@ class SequencerManager {
             let grid = SequencerModel.shared.grid
             grid.lightIndicator(noteNumber: noteNumber)
             
-            if (noteNumber % 8 == 0) {
-                soundsPlayer.play(instrumentNumber: 0)
+            for i in 0..<grid.rows {
+                if grid.pads[i][noteNumber].isActive {
+                    soundsPlayer.play(instrumentNumber: i)
+                }
             }
-            else if (noteNumber % 4 == 0) {
-                soundsPlayer.play(instrumentNumber: 1)
-            }
-
-            if (noteNumber % 2 == 0) {
-                soundsPlayer.play(instrumentNumber: 2)
-            }
-
-
         }
     }
 }
