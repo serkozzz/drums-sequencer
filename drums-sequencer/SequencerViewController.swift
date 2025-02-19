@@ -27,5 +27,11 @@ class SequencerViewController: UIViewController, PlayerViewDelegate {
         SequencerManager.shared.stop()
     }
     
-
+    @IBAction func columnsPlus(_ sender: Any) {
+        SequencerModel.shared.grid.doubleColumns()
+    }
+    
+    @IBAction func columnsMinus(_ sender: Any) {
+        SequencerModel.shared.grid.reduceColumnsByHalf()
+    }
 }

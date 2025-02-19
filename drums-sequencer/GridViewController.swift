@@ -12,10 +12,6 @@ private let reuseIdentifier = "Cell"
 
 class GridViewController: UIViewController, UICollectionViewDelegate {
     
-    
-    private var padsInRow: CGFloat = 8
-    private var rowsNumber: CGFloat = 4
-    
     @IBOutlet weak var collectionView: UICollectionView!
     var gridModel = SequencerModel.shared.grid
     
@@ -57,6 +53,12 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
         gridModel.indicatorsUpdated.sink { [weak self] _ in
             guard let self = self else { return }
             updateInidcators()
+        }.store(in: &cancellables)
+        
+        
+        gridModel.columnsChanged.sink { [weak self] _ in
+            guard let self = self else { return }
+            applySnapshot()
         }.store(in: &cancellables)
     }
     
@@ -104,11 +106,14 @@ extension GridViewController {
             guard let self else { return nil }
             
             let fractionalSectionHeight = sectionIndex == 0 ? 0.8 : 0.2
-            let padSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth( 1 / padsInRow), heightDimension: .fractionalHeight( 1))
+            let columns = CGFloat(SequencerModel.shared.grid.columns)
+            let rows = CGFloat(SequencerModel.shared.grid.rows)
+            
+            let padSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth( 1 / columns), heightDimension: .fractionalHeight( 1))
             let pad = NSCollectionLayoutItem(layoutSize: padSize)
             pad.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
             
-            let padGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight( fractionalSectionHeight / rowsNumber))
+            let padGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight( fractionalSectionHeight / rows))
             let padsGroup = NSCollectionLayoutGroup.horizontal(layoutSize: padGroupSize, subitems: [pad])
             //padsGroup.interItemSpacing = .fixed(5)
             

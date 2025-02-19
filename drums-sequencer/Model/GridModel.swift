@@ -10,6 +10,7 @@ import Combine
 
 
 let GRID_MAX_COLUMNS = 64
+let GRID_MIN_COLUMNS = 4
 let GRID_MAX_ROWS = 8
 let GRID_DEFAULT_COLUMNS = 8
 let GRID_DEFAULT_ROWS = 4
@@ -45,10 +46,23 @@ class GridModel {
     }
     
     func canDoubleColumns() -> Bool { return columns < GRID_MAX_COLUMNS }
+    func canReduceColumnsByHalf() -> Bool { return columns > GRID_MIN_COLUMNS }
+    
     
     func doubleColumns() {
         guard canDoubleColumns() else { return }
-        columns *= 2
+        let newColumnsNumber = columns * 2
+        self.indicators = (0..<newColumnsNumber).map { _ in Pad() }
+        columns = newColumnsNumber
+    }
+    
+    func reduceColumnsByHalf() {
+        guard canReduceColumnsByHalf() else { return }
+        
+        let newColumnsNumber = columns / 2
+        self.indicators = (0..<newColumnsNumber).map { _ in Pad() }
+        columns = newColumnsNumber
+        
     }
     
     func canAddRow() -> Bool { return rows < GRID_MAX_ROWS }

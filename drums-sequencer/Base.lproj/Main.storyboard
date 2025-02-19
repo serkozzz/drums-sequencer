@@ -27,11 +27,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="47" height="36"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" image="minus" catalog="system"/>
+                                                <connections>
+                                                    <action selector="columnsMinus:" destination="zWX-G9-QbU" eventType="touchUpInside" id="bXn-iL-f0w"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gv1-qV-jpX">
                                                 <rect key="frame" x="47" y="0.0" width="47" height="36"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" image="plus" catalog="system"/>
+                                                <connections>
+                                                    <action selector="columnsPlus:" destination="zWX-G9-QbU" eventType="touchUpInside" id="Kbk-EP-bJs"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -139,6 +145,7 @@
                     <view key="view" contentMode="scaleToFill" id="176-h7-bpg">
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="swJ-CZ-41e"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
