@@ -20,6 +20,10 @@
 		9DA50BEE2D6520A3002E7635 /* SequencerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BED2D652093002E7635 /* SequencerManager.swift */; };
 		9DA50BF02D652272002E7635 /* SoundsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BEF2D65226E002E7635 /* SoundsPlayer.swift */; };
 		9DA50BF32D6522FA002E7635 /* SequencerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BF22D6522F1002E7635 /* SequencerModel.swift */; };
+		9DA50BF52D65253E002E7635 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BF42D65253E002E7635 /* Audio.swift */; };
+		9DA50BFA2D65268E002E7635 /* ContentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BF92D652688002E7635 /* ContentLoader.swift */; };
+		9DA50BFC2D6526F8002E7635 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50BFB2D6526F5002E7635 /* Globals.swift */; };
+		9DA50C282D6549FF002E7635 /* AudioStorage in Resources */ = {isa = PBXBuildFile; fileRef = 9DA50C272D6549F7002E7635 /* AudioStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		9DA50BED2D652093002E7635 /* SequencerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencerManager.swift; sourceTree = "<group>"; };
 		9DA50BEF2D65226E002E7635 /* SoundsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsPlayer.swift; sourceTree = "<group>"; };
 		9DA50BF22D6522F1002E7635 /* SequencerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencerModel.swift; sourceTree = "<group>"; };
+		9DA50BF42D65253E002E7635 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		9DA50BF92D652688002E7635 /* ContentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLoader.swift; sourceTree = "<group>"; };
+		9DA50BFB2D6526F5002E7635 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		9DA50C272D6549F7002E7635 /* AudioStorage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AudioStorage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +78,10 @@
 		9DA50BA02D62A49C002E7635 /* drums-sequencer */ = {
 			isa = PBXGroup;
 			children = (
-				9DA50BF12D65227C002E7635 /* Model */,
+				9DA50C272D6549F7002E7635 /* AudioStorage */,
+				9DA50BF82D65256B002E7635 /* utils */,
+				9DA50C262D652A0F002E7635 /* Model */,
+				9DA50BF12D65227C002E7635 /* Logic */,
 				9DA50B972D62A49C002E7635 /* AppDelegate.swift */,
 				9DA50B982D62A49C002E7635 /* Assets.xcassets */,
 				9DA50B992D62A49C002E7635 /* Info.plist */,
@@ -78,20 +89,37 @@
 				9DA50B9D2D62A49C002E7635 /* Main.storyboard */,
 				9DA50B9E2D62A49C002E7635 /* SceneDelegate.swift */,
 				9DA50BE92D6418EF002E7635 /* SequencerViewController.swift */,
-				9DA50BED2D652093002E7635 /* SequencerManager.swift */,
 				9DA50BA82D62A4CB002E7635 /* GridViewController.swift */,
 				9DA50BE72D6408B7002E7635 /* PlayerView.swift */,
 			);
 			path = "drums-sequencer";
 			sourceTree = "<group>";
 		};
-		9DA50BF12D65227C002E7635 /* Model */ = {
+		9DA50BF12D65227C002E7635 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				9DA50BF92D652688002E7635 /* ContentLoader.swift */,
+				9DA50BED2D652093002E7635 /* SequencerManager.swift */,
+				9DA50BEF2D65226E002E7635 /* SoundsPlayer.swift */,
+				9DA50BEB2D641C86002E7635 /* SequencerTimer.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		9DA50BF82D65256B002E7635 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				9DA50BFB2D6526F5002E7635 /* Globals.swift */,
+				9DA50BF42D65253E002E7635 /* Audio.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		9DA50C262D652A0F002E7635 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				9DA50BF22D6522F1002E7635 /* SequencerModel.swift */,
 				9DA50BAC2D62CD1F002E7635 /* GridModel.swift */,
-				9DA50BEF2D65226E002E7635 /* SoundsPlayer.swift */,
-				9DA50BEB2D641C86002E7635 /* SequencerTimer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +188,7 @@
 				9DA50BA42D62A49C002E7635 /* Assets.xcassets in Resources */,
 				9DA50BA62D62A49C002E7635 /* LaunchScreen.storyboard in Resources */,
 				9DA50BA72D62A49C002E7635 /* Main.storyboard in Resources */,
+				9DA50C282D6549FF002E7635 /* AudioStorage in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,8 +201,11 @@
 			files = (
 				9DA50BA92D62A4CB002E7635 /* GridViewController.swift in Sources */,
 				9DA50BA12D62A49C002E7635 /* AppDelegate.swift in Sources */,
+				9DA50BF52D65253E002E7635 /* Audio.swift in Sources */,
 				9DA50BEA2D6418FE002E7635 /* SequencerViewController.swift in Sources */,
+				9DA50BFA2D65268E002E7635 /* ContentLoader.swift in Sources */,
 				9DA50BEC2D641C8E002E7635 /* SequencerTimer.swift in Sources */,
+				9DA50BFC2D6526F8002E7635 /* Globals.swift in Sources */,
 				9DA50BA22D62A49C002E7635 /* SceneDelegate.swift in Sources */,
 				9DA50BE82D64099D002E7635 /* PlayerView.swift in Sources */,
 				9DA50BAD2D62CD28002E7635 /* GridModel.swift in Sources */,

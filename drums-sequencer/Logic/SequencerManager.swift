@@ -12,6 +12,7 @@ class SequencerManager {
     static let shared = SequencerManager()
     
     var sequencerTimer = SequencerTimer()
+    var soundsPlayer = SoundsPlayer()
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(tick(_:)), name: .sequencerTimer, object: nil)
     }
@@ -31,6 +32,7 @@ class SequencerManager {
             print("noteNumber \(noteNumber)")
             var grid = SequencerModel.shared.grid
             grid.lightIndicator(noteNumber: noteNumber)
+            soundsPlayer.play(instrumentNumber: 0)
         }
     }
 }
