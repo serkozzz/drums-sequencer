@@ -108,10 +108,11 @@ extension GridViewController {
             let fractionalSectionHeight = sectionIndex == 0 ? 0.8 : 0.2
             let columns = CGFloat(SequencerModel.shared.grid.columns)
             let rows = CGFloat(SequencerModel.shared.grid.rows)
+            let horizontalInsets = layoutEnvironment.container.effectiveContentSize.width / columns / 20
             
             let padSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth( 1 / columns), heightDimension: .fractionalHeight( 1))
             let pad = NSCollectionLayoutItem(layoutSize: padSize)
-            pad.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+            pad.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: horizontalInsets, bottom: 5, trailing: horizontalInsets)
             
             let padGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight( fractionalSectionHeight / rows))
             let padsGroup = NSCollectionLayoutGroup.horizontal(layoutSize: padGroupSize, subitems: [pad])
