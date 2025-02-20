@@ -13,7 +13,6 @@ let GRID_MAX_COLUMNS = 64
 let GRID_MIN_COLUMNS = 4
 let GRID_MAX_ROWS = 8
 let GRID_DEFAULT_COLUMNS = 8
-let GRID_DEFAULT_ROWS = 4
 
 
 
@@ -24,7 +23,7 @@ class GridModel {
     private(set) var columns = GRID_DEFAULT_COLUMNS {
         didSet { columnsChanged.send(columns) }
     }
-    private(set) var rows = GRID_DEFAULT_ROWS {
+    private(set) var rows: Int {
         didSet { rowsChanged.send(rows) }
     }
     
@@ -37,7 +36,8 @@ class GridModel {
     }
     
     
-    init() {
+    init(instrumentsCount: Int) {
+        rows = instrumentsCount
         self.pads = (0..<GRID_MAX_ROWS).map { _ in
             (0..<GRID_MAX_COLUMNS).map { _ in Pad() }
         }

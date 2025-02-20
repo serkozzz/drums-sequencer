@@ -124,14 +124,22 @@
                                     <constraint firstItem="YCf-0G-gD3" firstAttribute="top" secondItem="m6S-Ad-dvU" secondAttribute="top" id="rdE-Qa-dbd"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3v-uh-j52">
+                                <rect key="frame" x="0.0" y="0.0" width="59" height="315"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EpN-rf-OGp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="m6S-Ad-dvU" firstAttribute="top" secondItem="EpN-rf-OGp" secondAttribute="top" id="BKI-Ub-g1W"/>
+                            <constraint firstItem="m6S-Ad-dvU" firstAttribute="leading" secondItem="y3v-uh-j52" secondAttribute="trailing" id="dtB-Ij-Prf"/>
+                            <constraint firstItem="EpN-rf-OGp" firstAttribute="bottom" secondItem="y3v-uh-j52" secondAttribute="bottom" id="e4w-Dq-2y2"/>
                             <constraint firstItem="EpN-rf-OGp" firstAttribute="bottom" secondItem="m6S-Ad-dvU" secondAttribute="bottom" id="peN-Ny-gtZ"/>
                             <constraint firstItem="EpN-rf-OGp" firstAttribute="trailing" secondItem="m6S-Ad-dvU" secondAttribute="trailing" id="tsT-gx-edE"/>
+                            <constraint firstItem="y3v-uh-j52" firstAttribute="leading" secondItem="hJt-7R-3PO" secondAttribute="leading" id="v1t-1J-c0O"/>
                             <constraint firstItem="m6S-Ad-dvU" firstAttribute="leading" secondItem="EpN-rf-OGp" secondAttribute="leading" id="xHf-eS-rgm"/>
+                            <constraint firstItem="y3v-uh-j52" firstAttribute="top" secondItem="hJt-7R-3PO" secondAttribute="top" id="yU8-FB-ymf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LaH-KI-pwl">
@@ -147,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGi-5K-nOm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1455.6338028169014" y="-150.38167938931298"/>
+            <point key="canvasLocation" x="1455.6338028169014" y="-151.14503816793894"/>
         </scene>
         <!--Player View Controller-->
         <scene sceneID="71r-WU-eN0">

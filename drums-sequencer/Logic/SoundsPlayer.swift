@@ -11,14 +11,13 @@ import AVFAudio
 class SoundsPlayer {
     
     private let engine = AVAudioEngine()
-    private var instruments = [ "kick.wav", "snare.wav", "hat.wav", "crash.wav"]
     private var samplers: [AudioSampler] = []
     
     init() {
         configureAudioSession()
         
-        instruments.forEach {
-            let wavURL = urlForAudio($0)
+        SequencerModel.shared.instruments.forEach {
+            let wavURL = urlForAudio($0.audioFileName)
             samplers.append(AudioSampler(engine: engine, wavUrl: wavURL))
         }
         startAudioEngine()

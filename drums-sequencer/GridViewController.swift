@@ -12,10 +12,15 @@ private let reuseIdentifier = "Cell"
 
 class GridViewController: UIViewController, UICollectionViewDelegate {
     
+    enum Section: Int {
+        case pads
+        case indicators
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView!
     var gridModel = SequencerModel.shared.grid
     
-    var dataSource: UICollectionViewDiffableDataSource<Int, UUID>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, UUID>!
     private var cancellables = Set<AnyCancellable>()
     
     @IBOutlet weak var gridBackgroundView: GridBackgroundView!
@@ -31,7 +36,7 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
         self.collectionView.delegate = self
         self.collectionView.backgroundColor = UIColor(_colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
         
-        dataSource = UICollectionViewDiffableDataSource<Int, UUID>(collectionView: collectionView!) {[weak self] collectionView, indexPath, padID in
+        dataSource = UICollectionViewDiffableDataSource<Section, UUID>(collectionView: collectionView!) {[weak self] collectionView, indexPath, padID in
             
             guard let self else { return nil }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
@@ -88,11 +93,11 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
     
     private func applySnapshot() {
         print("applySnapshot")
-        var snapshot = NSDiffableDataSourceSnapshot<Int, UUID>()
-        snapshot.appendSections([0])
+        var snapshot = NSDiffableDataSourceSnapshot<Section, UUID>()
+        snapshot.appendSections([.pads])
         snapshot.appendItems(gridModel.flattenedPadsArray.map { $0.id })
         
-        snapshot.appendSections([1])
+        snapshot.appendSections([.indicators])
         snapshot.appendItems(gridModel.indicators.map({ $0.id }))
         dataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -106,7 +111,6 @@ extension GridViewController {
         
         return UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
             guard let self else { return nil }
-            print("createLayout")
             
             let rows = CGFloat(SequencerModel.shared.grid.rows)
             let columns = CGFloat(SequencerModel.shared.grid.columns)

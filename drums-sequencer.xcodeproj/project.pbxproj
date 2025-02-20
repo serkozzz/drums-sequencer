@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D638D4D2D66B7BE00F2FA25 /* InstrumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D638D4C2D66B7B300F2FA25 /* InstrumentModel.swift */; };
 		9DA50BA12D62A49C002E7635 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50B972D62A49C002E7635 /* AppDelegate.swift */; };
 		9DA50BA22D62A49C002E7635 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50B9E2D62A49C002E7635 /* SceneDelegate.swift */; };
 		9DA50BA42D62A49C002E7635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DA50B982D62A49C002E7635 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D638D4C2D66B7B300F2FA25 /* InstrumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentModel.swift; sourceTree = "<group>"; };
 		9DA50B7F2D62A33A002E7635 /* drums-sequencer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "drums-sequencer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DA50B972D62A49C002E7635 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DA50B982D62A49C002E7635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		9DA50C262D652A0F002E7635 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9D638D4C2D66B7B300F2FA25 /* InstrumentModel.swift */,
 				9DA50BF22D6522F1002E7635 /* SequencerModel.swift */,
 				9DA50BAC2D62CD1F002E7635 /* GridModel.swift */,
 			);
@@ -210,6 +213,7 @@
 				9DA50BEC2D641C8E002E7635 /* SequencerTimer.swift in Sources */,
 				9DA50BFC2D6526F8002E7635 /* Globals.swift in Sources */,
 				9DA50C2A2D6668DD002E7635 /* GridBackgroundView.swift in Sources */,
+				9D638D4D2D66B7BE00F2FA25 /* InstrumentModel.swift in Sources */,
 				9DA50BA22D62A49C002E7635 /* SceneDelegate.swift in Sources */,
 				9DA50BE82D64099D002E7635 /* PlayerView.swift in Sources */,
 				9DA50BAD2D62CD28002E7635 /* GridModel.swift in Sources */,
