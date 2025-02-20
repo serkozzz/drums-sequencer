@@ -18,6 +18,7 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
     var dataSource: UICollectionViewDiffableDataSource<Int, UUID>!
     private var cancellables = Set<AnyCancellable>()
     
+    @IBOutlet weak var gridBackgroundView: GridBackgroundView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +29,7 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView.collectionViewLayout = createLayout()
         self.collectionView.delegate = self
+        self.collectionView.backgroundColor = UIColor(_colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
         
         dataSource = UICollectionViewDiffableDataSource<Int, UUID>(collectionView: collectionView!) {[weak self] collectionView, indexPath, padID in
             
@@ -48,7 +50,9 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
             }
             return cell
         }
+        
         applySnapshot()
+        gridBackgroundView.setColumns(columns: gridModel.columns)
         
         gridModel.indicatorsUpdated.sink { [weak self] _ in
             guard let self = self else { return }
@@ -59,6 +63,7 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
         gridModel.columnsChanged.sink { [weak self] _ in
             guard let self = self else { return }
             applySnapshot()
+            gridBackgroundView.setColumns(columns: gridModel.columns)
         }.store(in: &cancellables)
     }
     
@@ -74,11 +79,7 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
     }
   
     private func updateInidcators() {
-//        var sectionSnapshot = NSDiffableDataSourceSectionSnapshot<UUID>()
-//        var indicators = GridModel.shared.indicators.map{$0.id}
-//        sectionSnapshot.append(indicators)
-//        dataSource.apply(sectionSnapshot, to: 1, animatingDifferences: true)
-        var indicators = gridModel.indicators.map{$0.id}
+        let indicators = gridModel.indicators.map{$0.id}
         var snapshot = dataSource.snapshot()
         snapshot.reloadItems(indicators)
         dataSource.apply(snapshot, animatingDifferences: false)
@@ -86,6 +87,7 @@ class GridViewController: UIViewController, UICollectionViewDelegate {
     }
     
     private func applySnapshot() {
+        print("applySnapshot")
         var snapshot = NSDiffableDataSourceSnapshot<Int, UUID>()
         snapshot.appendSections([0])
         snapshot.appendItems(gridModel.flattenedPadsArray.map { $0.id })
@@ -104,21 +106,26 @@ extension GridViewController {
         
         return UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
             guard let self else { return nil }
+            print("createLayout")
             
-            let fractionalSectionHeight = sectionIndex == 0 ? 0.8 : 0.2
-            let columns = CGFloat(SequencerModel.shared.grid.columns)
             let rows = CGFloat(SequencerModel.shared.grid.rows)
+            let columns = CGFloat(SequencerModel.shared.grid.columns)
+            
+            let fractionalGroupHeight = sectionIndex == 0 ? 0.95 / rows : 0.05
+    
+            let padWidth = collectionView.frame.width / columns
+
             let horizontalInsets = layoutEnvironment.container.effectiveContentSize.width / columns / 20
             
-            let padSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth( 1 / columns), heightDimension: .fractionalHeight( 1))
+            let padSize = NSCollectionLayoutSize(widthDimension: .absolute(padWidth), heightDimension: .fractionalHeight( 1))
             let pad = NSCollectionLayoutItem(layoutSize: padSize)
             pad.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: horizontalInsets, bottom: 5, trailing: horizontalInsets)
             
-            let padGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight( fractionalSectionHeight / rows))
+            let padGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight( fractionalGroupHeight))
             let padsGroup = NSCollectionLayoutGroup.horizontal(layoutSize: padGroupSize, subitems: [pad])
-            //padsGroup.interItemSpacing = .fixed(5)
             
             let section = NSCollectionLayoutSection(group: padsGroup)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
             return section
         }
     }
